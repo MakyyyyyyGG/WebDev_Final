@@ -60,8 +60,7 @@
 						<a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="false"><span class="icon-user"></span></a>
 						<div class="dropdown-menu" aria-labelledby="dropdown04">
-							<a class="dropdown-item" href="signup.html" id="sign_out">Sign Up</a>
-							<a class="dropdown-item" href="login.html" id="sign_out">Log In</a>
+							<button type="button" id="sign_out"><a class="dropdown-item">Sign Out</a></button>
 						</div>
 					</li>
 					<li class="nav-item"><a href="contact.html" class="nav-link" id="greet">Welcome</a></li>
@@ -217,11 +216,11 @@
 							<div class="overlay"></div>
 						</a>
 						<div class="text py-3 pb-4 px-3 text-center">
-							<h3><a href="#" id="prod1_name"></a></h3>
+							<h3><a href="#" id="tall_lamp">Tall Lamp</a></h3>
 							<div class="d-flex">
 								<div class="pricing">
-									<p class="price"><span class=" mr-2 price-dc">$120.00</span><span>$</span><span
-											id="prod1_price"></span></p>
+									<p class="price"><span class="mr-2 price-dc">$120.00</span><span
+											class="price-sale">$80.00</span></p>
 								</div>
 							</div>
 							<div class="bottom-area d-flex px-3">
@@ -248,10 +247,10 @@
 							<div class="overlay"></div>
 						</a>
 						<div class="text py-3 pb-4 px-3 text-center">
-							<h3><a href="#" id="prod2_name"></a></h3>
+							<h3><a href="#">White Souvenirs</a></h3>
 							<div class="d-flex">
 								<div class="pricing">
-									<p class="price"><span>$</span><span id="prod2_price"></span></p>
+									<p class="price"><span>$120.00</span></p>
 								</div>
 							</div>
 							<div class="bottom-area d-flex px-3">
@@ -278,10 +277,10 @@
 							<div class="overlay"></div>
 						</a>
 						<div class="text py-3 pb-4 px-3 text-center">
-							<h3><a href="#" id="prod3_name"></a></h3>
+							<h3><a href="#">Red Lamp</a></h3>
 							<div class="d-flex">
 								<div class="pricing">
-									<p class="price"><span>$</span><span id="prod3_price"></span></p>
+									<p class="price"><span>$120.00</span></p>
 								</div>
 							</div>
 							<div class="bottom-area d-flex px-3">
@@ -308,10 +307,10 @@
 							<div class="overlay"></div>
 						</a>
 						<div class="text py-3 pb-4 px-3 text-center">
-							<h3><a href="#" id="prod4_name"></a></h3>
+							<h3><a href="#">Super Lamp</a></h3>
 							<div class="d-flex">
 								<div class="pricing">
-									<p class="price"><span>$</span><span id="prod4_price"></span></p>
+									<p class="price"><span>$120.00</span></p>
 								</div>
 							</div>
 							<div class="bottom-area d-flex px-3">
@@ -341,11 +340,11 @@
 							<div class="overlay"></div>
 						</a>
 						<div class="text py-3 pb-4 px-3 text-center">
-							<h3><a href="#" id="prod5_name"></a></h3>
+							<h3><a href="#">Custom Trophy</a></h3>
 							<div class="d-flex">
 								<div class="pricing">
-									<p class="price"><span class="mr-2 price-dc">$120.00</span><span>$</span><span
-											class="price-sale" id="prod5_price"></span></p>
+									<p class="price"><span class="mr-2 price-dc">$120.00</span><span
+											class="price-sale">$80.00</span></p>
 								</div>
 							</div>
 							<div class="bottom-area d-flex px-3">
@@ -372,10 +371,10 @@
 							<div class="overlay"></div>
 						</a>
 						<div class="text py-3 pb-4 px-3 text-center">
-							<h3><a href="#" id="prod6_name"></a></h3>
+							<h3><a href="#">Tall Vase</a></h3>
 							<div class="d-flex">
 								<div class="pricing">
-									<p class="price"><span>$</span><span id="prod6_price"></span></p>
+									<p class="price"><span>$120.00</span></p>
 								</div>
 							</div>
 							<div class="bottom-area d-flex px-3">
@@ -402,10 +401,10 @@
 							<div class="overlay"></div>
 						</a>
 						<div class="text py-3 pb-4 px-3 text-center">
-							<h3><a href="#" id="prod7_name"></a></h3>
+							<h3><a href="#">Vase</a></h3>
 							<div class="d-flex">
 								<div class="pricing">
-									<p class="price"><span>$</span><span id="prod7_price"></span></p>
+									<p class="price"><span>$120.00</span></p>
 								</div>
 							</div>
 							<div class="bottom-area d-flex px-3">
@@ -432,10 +431,10 @@
 							<div class="overlay"></div>
 						</a>
 						<div class="text py-3 pb-4 px-3 text-center">
-							<h3><a href="#" id="prod8_name"></a></h3>
+							<h3><a href="#">Brown Vase</a></h3>
 							<div class="d-flex">
 								<div class="pricing">
-									<p class="price"><span>$</span><span id="prod8_price"></span></p>
+									<p class="price"><span>$120.00</span></p>
 								</div>
 							</div>
 							<div class="bottom-area d-flex px-3">
@@ -685,32 +684,8 @@
 				stroke="#F96D00" />
 		</svg></div>
 
-	<script type="module">
-		import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
-		import { getDatabase, get, ref, child } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
-		import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
-
-		// TODO: Add SDKs for Firebase products that you want to use
-		// https://firebase.google.com/docs/web/setup#available-libraries
-
-		// Your web app's Firebase configuration
-		const firebaseConfig = {
-			apiKey: "AIzaSyDs1lfKYOB5--BiDaVHBWu9baIM8GHAnlo",
-			authDomain: "sample-42d4a.firebaseapp.com",
-			projectId: "sample-42d4a",
-			storageBucket: "sample-42d4a.appspot.com",
-			messagingSenderId: "508468942956",
-			appId: "1:508468942956:web:65600c02f26dfd1b1f2049"
-		};
-
-		// Initialize Firebase
-		const app = initializeApp(firebaseConfig);
-		const db = getDatabase();
-		const auth = getAuth(app);
-		const dbref = ref(db);
-
-	
-
+	<script>
+		let cart = document.getElementById("tall_lamp");
 		let addToCartBtn = document.querySelector(".ion-ios-cartion-ios-cart")
 
 		let userCredentials = JSON.parse(sessionStorage.getItem("user-credentials"));
@@ -722,88 +697,30 @@
 
 		let signOut = () => {
 			sessionStorage.removeItem("user-info");
-			sessionStorage.removeItem("user-credentails");
+			sessionStorage.removeItem("user-credentials");
 			window.location.href = "login.html";
 		}
-		// let checkCred = () => {
-		// 	if (!sessionStorage.getItem("user-credentials"))
-		// 	window.location.href = "login.html"
-
-		// 	else{
-		// 		greet.innerHTML = `Welcome ${userInfo.username}!`;
-		// 	}
-		// }
-		// window.addEventListener('load', checkCred);
+		let checkCred = () => {
+			if (!sessionStorage.getItem("user-credentials"))
+			window.location.href = "login.html"
+			else{
+				greet.innerHTML = `Welcome ${userInfo.username}!`;
+			}
+		}
+		window.addEventListener('load', checkCred);
 		signOutButton.addEventListener('click', signOut);
+		
 
-		// ... (your existing code)
-
-		// Function to get product details
-		// const getProductDetails = () => {
-		// 	const productId = 'prod1'; // Replace with the actual product ID you want to retrieve
-
-		// 	const productRef = child(dbref, `Products/${productId}`);
-
-		// 	get(productRef).then((snapshot) => {
-		// 		if (snapshot.exists()) {
-		// 			const productData = snapshot.val();
-		// 			prod1_name.innerHTML = `${productData.Name}`;
-		// 			prod1_price.innerHTML = `${productData.Price}`;
-
-		// 			console.log('Product Name:', productData.Name);
-		// 			console.log('Product Price:', productData.Price);
-		// 		} else {
-		// 			console.log('Product not found');
-		// 		}
-		// 	}).catch((error) => {
-		// 		console.error('Error fetching product details:', error.message);
-		// 	});
-		// };
-
-		// // Call the function to get product details
-		// window.addEventListener('load', getProductDetails);
-
-		// ... (the rest of your code)
-
-
-	// Function to get product details
-	const getProductDetails = () => {
-		// List of product IDs, replace these with your actual product IDs
-		const productIds = ['prod1', 'prod2', 'prod3', 'prod4', 'prod5', 'prod6', 'prod7', 'prod8'];
-
-		productIds.forEach(productId => {
-			const productRef = child(dbref, `Products/${productId}`);
-
-			get(productRef).then((snapshot) => {
-				if (snapshot.exists()) {
-					const productData = snapshot.val();
-
-					// Assuming you have elements with IDs like 'prod1_name', 'prod2_name', etc.
-					const productNameElement = document.getElementById(`${productId}_name`);
-					const productPriceElement = document.getElementById(`${productId}_price`);
-
-					if (productNameElement && productPriceElement) {
-						productNameElement.innerHTML = `${productData.Name}`;
-						productPriceElement.innerHTML = `${productData.Price}`;
-
-						console.log(`Product ${productId} Name:`, productData.Name);
-						console.log(`Product ${productId} Price:`, productData.Price);
-					} else {
-						console.log(`HTML elements for Product ${productId} not found`);
-					}
-				} else {
-					console.log(`Product ${productId} not found`);
-				}
-			}).catch((error) => {
-				console.error(`Error fetching product ${productId} details:`, error.message);
-			});
-		});
-	};
-
-	// Call the function to get product details
-	window.addEventListener('load', getProductDetails);
-
-
+		let addToCart = evt => {
+            evt.preventDefault();
+            //regsiter user to db
+            
+                set(ref(db, 'UserCart/' + credentials.user.uid),{
+                    Cart: cart.value
+                })
+				console.log("Item added to cart database");
+        }
+		addToCartBtn.addEventListener('click', addToCart);
 
 
 

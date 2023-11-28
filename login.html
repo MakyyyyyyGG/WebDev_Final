@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>SCDES - Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="./images/logo (3).png">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body class="goto-here">
+
+    <div class="main">
+
+        <!-- Sign up form -->
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Log In</h2>
+                        <form class="signin_form" id="signin_form" autocomplete="off">
+                            <!-- <div class="form-group">
+                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="username" id="username" placeholder="Your Username"  />
+                            </div> -->
+                            <div class="form-group">
+                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                <input type="email" name="email" id="email" placeholder="Your Email" />
+                            </div>
+                            <div class="form-group">
+                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="password" id="password" placeholder="Password" />
+                            </div>
+                            <div class="form-group form-button">
+                                <button type="submit" id="submit" class="btn btn-primary">Sign In</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="signup-image">
+                        <figure><img src="images/signin-image.jpg" alt="sing up image"></figure>
+                        <a href="signup.html" class="signup-image-link">I want to become a member</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sing in  Form
+        <section class="sign-in">
+            <div class="container">
+                <div class="signin-content">
+                    <div class="signin-image">
+                        <figure><img src="images/signin-image.jpg" alt="sing up image"></figure>
+                        <a href="#" class="signup-image-link">Create an account</a>
+                    </div>
+
+                    <div class="signin-form">
+                        <h2 class="form-title">Sign up</h2>
+                        <form method="POST" class="register-form" id="login-form">
+                            <div class="form-group">
+                                <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="your_name" id="your_name" placeholder="Your Name"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="your_pass" id="your_pass" placeholder="Password"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
+                                <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                            </div>
+                        </form>
+                        <div class="social-login">
+                            <span class="social-label">Or login with</span>
+                            <ul class="socials">
+                                <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
+                                <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
+                                <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+    </div>
+
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+        import { getDatabase, get, ref, child } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
+
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDs1lfKYOB5--BiDaVHBWu9baIM8GHAnlo",
+            authDomain: "sample-42d4a.firebaseapp.com",
+            projectId: "sample-42d4a",
+            storageBucket: "sample-42d4a.appspot.com",
+            messagingSenderId: "508468942956",
+            appId: "1:508468942956:web:65600c02f26dfd1b1f2049"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase();
+        const auth = getAuth(app);
+        const dbref = ref(db);
+
+        //let username = document.getElementById('username');
+        let email = document.getElementById('email');
+        let password = document.getElementById('password');
+        let signin_form = document.getElementById('signin_form');
+
+        let loginUser = evt => {
+            evt.preventDefault();
+            const isAdmin = true;
+            //checks email and pw   
+            const userRef = isAdmin ? 'UserAuthList/Admin' : 'UserAuthList';
+
+            signInWithEmailAndPassword(auth, email.value, password.value)
+                .then((credentials) => {
+                    alert("Login Success");
+                    //creae an object when user login and save in in session storage then convert object into a string 
+                        get(child(dbref, `${userRef}` + credentials.user.uid)).then((snapshot)=>{
+                            if(snapshot.exists){
+                                sessionStorage.setItem("user-info", JSON.stringify({
+                                    username: snapshot.val().username
+                                }))
+                                sessionStorage.setItem("user-credentials", JSON.stringify(credentials.user));
+                                window.location.href = "index2.html";
+                            }
+                        })
+                })
+                .catch((error)=>{
+                    console.log("wrong pw/email");
+                    alert(error.message);
+                    console.log(error.message);
+                    console.log(error.code);
+                })
+                
+        }
+
+
+        // let loginUser = evt => {
+        //         evt.preventDefault();
+        //         const isAdmin = true;
+
+        //         // Checks email and password
+        //         signInWithEmailAndPassword(auth, email.value, password.value)
+        //             .then((credentials) => {
+        //                 alert("Login Success");
+
+        //                 // Create an object when user login and save in session storage then convert object into a string
+        //                 const userRef = isAdmin ? 'UserAuthList/Admin' : 'UserAuthList';
+
+        //                 get(child(dbref, `${userRef}/${credentials.user.uid}`)).then((snapshot) => {
+        //                     if (snapshot.exists()) {
+        //                         const userData = snapshot.val();
+        //                         sessionStorage.setItem("user-info", JSON.stringify({
+        //                             username: userData.username,
+        //                             // Add other user data properties as needed
+        //                         }));
+        //                         sessionStorage.setItem("user-credentials", JSON.stringify(credentials.user));
+        //                         window.location.href = "index2.html";
+        //                     }
+        //                 }).catch((error) => {
+        //                     console.error('Error fetching user details:', error.message);
+        //                 });
+        //             })
+        //             .catch((error) => {
+        //                 console.log("Wrong email/password");
+        //                 alert(error.message);
+        //                 console.log(error.message);
+        //                 console.log(error.code);
+        //             });
+        //     }
+
+
+        signin_form.addEventListener('submit', loginUser);
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>
