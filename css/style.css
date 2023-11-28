@@ -12633,11 +12633,9 @@ h5,
 }
 
 .product .text .bottom-area {
-  position: absolute;
   bottom: 15px;
   left: 0;
   right: 0;
-  opacity: 0;
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   -webkit-transition: all 0.3s ease;
@@ -12669,7 +12667,7 @@ h5,
 }
 
 .product:hover .pricing {
-  opacity: 0;
+  opacity: 1;
 }
 
 .product:hover .text .bottom-area {
