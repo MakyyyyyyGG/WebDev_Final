@@ -59,8 +59,8 @@
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="false"><span class="icon-user"></span></a>
-						<div class="dropdown-menu" aria-labelledby="dropdown04">
-							<button type="button" id="sign_out"><a class="dropdown-item">Sign Out</a></button>
+						<div class="dropdown-menu" aria-labelledby="dropdown04" id="userDropdown">
+							<!-- <button type="button" id="sign_out"><a class="dropdown-item">Sign Out</a></button> -->
 						</div>
 					</li>
 					<li class="nav-item"><a href="contact.html" class="nav-link" id="greet"></a></li>
@@ -685,42 +685,112 @@
 		</svg></div>
 
 	<script>
-		let cart = document.getElementById("tall_lamp");
-		let addToCartBtn = document.querySelector(".ion-ios-cartion-ios-cart")
+		// let cart = document.getElementById("tall_lamp");
+		// let addToCartBtn = document.querySelector(".ion-ios-cartion-ios-cart")
+
+		// let userCredentials = JSON.parse(sessionStorage.getItem("user-credentials"));
+		// let userInfo = JSON.parse(sessionStorage.getItem("user-info"));
+		// let userDropdown = document.getElementById("userDropdown");
+		// let greet = document.getElementById("greet");
+		// let signOutButton = document.getElementById("sign_out");
+
+		// let updateDropdownMenu = () => {
+		// 		if (userCredentials) {
+		// 			// User is logged in
+		// 			userDropdown.innerHTML = `
+        //     <a class="dropdown-item" href="Account_As.html" id="sign_up">Sign Up</a>
+        //     <a class="dropdown-item" href="login.html" id="log_in">Log In</a>`;
+		// 			greet.innerHTML = `Welcome ${userInfo.username}!`;
+		// 		} else {
+		// 			// No user is logged in
+		// 			userDropdown.innerHTML = `
+        //     <a class="dropdown-item" href="#" id="sign_out">Sign Out</a>`;
+		// 		}
+		// 	};
+
+
+		// let signOut = () => {
+		// 	sessionStorage.removeItem("user-info");
+		// 	sessionStorage.removeItem("user-credentials");
+		// 	window.location.href = "login.html";
+		// }
+
+		// let checkCred = () => {
+		// 		if (!sessionStorage.getItem("user-credentials")) {
+		// 			updateDropdownMenu();
+		// 		} else {
+		// 			updateDropdownMenu();
+		// 		}
+		// 	};
+
+		// window.addEventListener('load', checkCred);
+		// signOutButton.addEventListener('click', signOut);
+		
+		// userDropdown.addEventListener('click', (event) => {
+		// 		// Handle click events on dropdown items
+		// 		if (event.target.id === 'sign_out') {
+		// 			signOut();
+		// 		} else if (event.target.id === 'sign_up') {
+		// 			// Handle sign up action
+		// 			// You can redirect or perform any other actions here
+		// 			console.log("Sign Up clicked");
+		// 		} else if (event.target.id === 'log_in') {
+		// 			// Handle log in action
+		// 			// You can redirect or perform any other actions here
+		// 			console.log("Log In clicked");
+		// 		}
+		// 	});
 
 		let userCredentials = JSON.parse(sessionStorage.getItem("user-credentials"));
-		let userInfo = JSON.parse(sessionStorage.getItem("user-info"));
+let userInfo = JSON.parse(sessionStorage.getItem("user-info"));
 
-		let greet = document.getElementById("greet");
-		let signOutButton = document.getElementById("sign_out");
+let greet = document.getElementById("greet");
+let userDropdown = document.getElementById("userDropdown");
+
+let signOut = () => {
+    sessionStorage.removeItem("user-info");
+    sessionStorage.removeItem("user-credentials");
+    window.location.href = "login.html";
+};
+
+let updateDropdownMenu = () => {
+    if (userCredentials) {
+        // User is logged in
+        userDropdown.innerHTML = `
+            <a class="dropdown-item" href="#" id="sign_out">Sign Out</a>
+        `;
+        greet.innerHTML = `Welcome ${userInfo.username}!`;
+    } else {
+        // No user is logged in
+        userDropdown.innerHTML = `
+            <a class="dropdown-item" href="Account_As.html" id="sign_up">Sign Up</a>
+            <a class="dropdown-item" href="login.html" id="log_in">Log In</a>
+        `;
+    }
+};
+
+let checkCred = () => {
+    updateDropdownMenu();
+};
+
+window.addEventListener('load', checkCred);
+userDropdown.addEventListener('click', (event) => {
+    // Handle click events on dropdown items
+    if (event.target.id === 'sign_out') {
+        signOut();
+    } else if (event.target.id === 'sign_up') {
+        window.location.href = 'signup.html'
+        console.log("Sign Up clicked");
+    } else if (event.target.id === 'log_in') {
+		window.location.href = 'Account_As.html'
+        // Handle log in action
+        // You can redirect or perform any other actions here
+        console.log("Log In clicked");
+    }
+});
 
 
-		let signOut = () => {
-			sessionStorage.removeItem("user-info");
-			sessionStorage.removeItem("user-credentials");
-			window.location.href = "login.html";
-		}
-		let checkCred = () => {
-			if (!sessionStorage.getItem("user-credentials"))
-			window.location.href = "login.html"
-			else{
-				greet.innerHTML = `Welcome ${userInfo.username}!`;
-			}
-		}
-		window.addEventListener('load', checkCred);
-		signOutButton.addEventListener('click', signOut);
 		
-
-		let addToCart = evt => {
-            evt.preventDefault();
-            //regsiter user to db
-            
-                set(ref(db, 'UserCart/' + credentials.user.uid),{
-                    Cart: cart.value
-                })
-				console.log("Item added to cart database");
-        }
-		addToCartBtn.addEventListener('click', addToCart);
 
 
 

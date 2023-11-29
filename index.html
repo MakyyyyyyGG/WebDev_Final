@@ -211,7 +211,7 @@
 			<div class="row">
 				<div class="col-md-6 col-lg-3 ftco-animate">
 					<div class="product">
-						<a href="shop.html" class="img-prod"><img class="img-fluid" src="images/prod1.png"
+						<a href="shop.html" class="img-prod"><img class="img-fluid" src="" id="prod1_img"
 								alt="Colorlib Template">
 							<span class="status">30%</span>
 							<div class="overlay"></div>
@@ -243,7 +243,7 @@
 				</div>
 				<div class="col-md-6 col-lg-3 ftco-animate">
 					<div class="product">
-						<a href="shop.html" class="img-prod"><img class="img-fluid" src="images/prod2.png"
+						<a href="shop.html" class="img-prod"><img class="img-fluid" src="" id="prod2_img"
 								alt="Colorlib Template">
 							<div class="overlay"></div>
 						</a>
@@ -273,7 +273,7 @@
 				</div>
 				<div class="col-md-6 col-lg-3 ftco-animate">
 					<div class="product">
-						<a href="shop.html" class="img-prod"><img class="img-fluid" src="images/prod3.png"
+						<a href="shop.html" class="img-prod"><img class="img-fluid" src="" id="prod3_img"
 								alt="Colorlib Template">
 							<div class="overlay"></div>
 						</a>
@@ -303,7 +303,7 @@
 				</div>
 				<div class="col-md-6 col-lg-3 ftco-animate">
 					<div class="product">
-						<a href="shop.html" class="img-prod"><img class="img-fluid" src="images/prod4.png"
+						<a href="shop.html" class="img-prod"><img class="img-fluid" src="" id="prod4_img"
 								alt="Colorlib Template">
 							<div class="overlay"></div>
 						</a>
@@ -335,7 +335,7 @@
 
 				<div class="col-md-6 col-lg-3 ftco-animate">
 					<div class="product">
-						<a href="shop.html" class="img-prod"><img class="img-fluid" src="images/prod5.png"
+						<a href="shop.html" class="img-prod"><img class="img-fluid" src="" id="prod5_img"
 								alt="Colorlib Template">
 							<span class="status">30%</span>
 							<div class="overlay"></div>
@@ -367,7 +367,7 @@
 				</div>
 				<div class="col-md-6 col-lg-3 ftco-animate">
 					<div class="product">
-						<a href="shop.html" class="img-prod"><img class="img-fluid" src="images/prod6.png"
+						<a href="shop.html" class="img-prod"><img class="img-fluid" src="" id="prod6_img"
 								alt="Colorlib Template">
 							<div class="overlay"></div>
 						</a>
@@ -397,7 +397,7 @@
 				</div>
 				<div class="col-md-6 col-lg-3 ftco-animate">
 					<div class="product">
-						<a href="shop.html" class="img-prod"><img class="img-fluid" src="images/prod7.png"
+						<a href="shop.html" class="img-prod"><img class="img-fluid" src="" id="prod7_img"
 								alt="Colorlib Template">
 							<div class="overlay"></div>
 						</a>
@@ -427,7 +427,7 @@
 				</div>
 				<div class="col-md-6 col-lg-3 ftco-animate">
 					<div class="product">
-						<a href="shop.html" class="img-prod"><img class="img-fluid" src="images/prod8.png"
+						<a href="shop.html" class="img-prod"><img class="img-fluid" src="" id="prod8_img"
 								alt="Colorlib Template">
 							<div class="overlay"></div>
 						</a>
@@ -711,7 +711,7 @@
 
 	
 
-		let addToCartBtn = document.querySelector(".ion-ios-cartion-ios-cart")
+		// let addToCartBtn = document.querySelector(".ion-ios-cartion-ios-cart")
 
 		let userCredentials = JSON.parse(sessionStorage.getItem("user-credentials"));
 		let userInfo = JSON.parse(sessionStorage.getItem("user-info"));
@@ -770,9 +770,23 @@
 	const getProductDetails = () => {
 		// List of product IDs, replace these with your actual product IDs
 		const productIds = ['prod1', 'prod2', 'prod3', 'prod4', 'prod5', 'prod6', 'prod7', 'prod8'];
+		// const prodImg = gdocument.getElementById("prodImg");
+
+		//use google drive images link from firebase and use it in html
+		const replaceDriveLink = (driveLink) => {
+        // Replace the specific part of the Google Drive shareable link
+        let replacedLink = driveLink.replace('https://drive.google.com/file/d/', 'https://drive.google.com/uc?export=view&id=');
+
+        // Remove the additional part of the link
+        replacedLink = replacedLink.replace('/view?usp=drive_link', '');
+
+        return replacedLink;
+    };
 
 		productIds.forEach(productId => {
 			const productRef = child(dbref, `Products/${productId}`);
+			const prodImgElement = document.getElementById(`${productId}_img`);
+            // const prodImgElement = document.getElementById(`${productId}_img`);
 
 			get(productRef).then((snapshot) => {
 				if (snapshot.exists()) {
@@ -782,12 +796,17 @@
 					const productNameElement = document.getElementById(`${productId}_name`);
 					const productPriceElement = document.getElementById(`${productId}_price`);
 
-					if (productNameElement && productPriceElement) {
+					if (productNameElement && productPriceElement && prodImgElement) {
 						productNameElement.innerHTML = `${productData.Name}`;
 						productPriceElement.innerHTML = `${productData.Price}`;
 
+
+						const replacedDriveLink = replaceDriveLink(productData.prodImg);
+                        prodImgElement.src = replacedDriveLink || 'default-image-url.jpg';
+
 						console.log(`Product ${productId} Name:`, productData.Name);
 						console.log(`Product ${productId} Price:`, productData.Price);
+						console.log(prodImgElement);
 					} else {
 						console.log(`HTML elements for Product ${productId} not found`);
 					}
