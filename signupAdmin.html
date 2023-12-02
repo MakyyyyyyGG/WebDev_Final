@@ -144,23 +144,44 @@
 
             //fucntion to registrer user
             let RegisterUser = evt => {
-                evt.preventDefault();
-                //regsiter user to db
-                createUserWithEmailAndPassword(auth, email.value, password.value)
-                .then((credentials)=>{
-                    alert("Create Account Success");
-                    set(ref(db, 'Admin/' + credentials.user.uid),{
-                        username: uname.value
-                    })
-                    console.log(uname.value);
-                })
-                .catch((error)=>{
-                    alert(error.message);
-                    console.log(error.message);
-                    console.log(error.code);
-                })
-            }
+                    evt.preventDefault();
+                    //regsiter user to db
+                    createUserWithEmailAndPassword(auth, email.value, password.value)
+                        // .then((credentials)=>{
+                        //     set(ref(db, 'Admin/' + credentials.user.uid),{
+                        //         username: uname.value
+                        //     })
+                        //     console.log(uname.value);
+                        //     alert("Create Account Success");
+                        //     //  window.location.href = 'login.html'
+                        // })
+
+                        .then((credentials) => {
+                            // Check if uname.value is accessible and not undefined
+                            console.log("Username:", uname.value);
+
+                            // Save username to the database
+                            set(ref(db, 'Admin/' + credentials.user.uid), {
+                                username: uname.value
+                            })
+                                .then(() => {
+                                    // Success message and redirection
+                                    console.log("Username saved successfully.");
+                                    alert("Create Account Success");
+                                    window.location.href = 'login.html';
+                                })
+                                .catch((error) => {
+                                    console.error("Error saving username:", error.message);
+                                });
+                        })
+                        .catch((error) => {
+                            alert(error.message);
+                            console.log(error.message);
+                            console.log(error.code);
+                        })
+                };
             //trigger fucntion with submit button
+
             register_form.addEventListener('submit', RegisterUser);
         </script>
 
